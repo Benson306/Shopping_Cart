@@ -1,5 +1,5 @@
 const Products = () => {
-    return ( <div class='pl-6'>
+    return ( <div class='pl-6 pr-6'>
         <br />
         <p class="text-3xl text-center text-orange-500 font-semibold">Products</p>
         <br />

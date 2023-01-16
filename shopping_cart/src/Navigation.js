@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 const Navigation = () => {
     return ( 
         <ul class="flex place-content-end gap-10 py-4 pr-8">
+            <li class="align-center m-auto">
+                <Link to="/">
+                    <img class="align-middle" src={require('./images/samsung.png')} />
+                </Link>
+                
+            </li>
             <li class="text-xl text-slate-50 hover:text-orange-400 text-center font-sans ">
                 <Link to="/">Home</Link>
             </li>

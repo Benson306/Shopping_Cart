@@ -13,7 +13,7 @@ const Landing = () => {
             </Link>
         </div>
         <div className="basis-2/3 pl-10 pr-4">
-            <img src={require('./images/samsung.jpg')} />
+            <img src={require('./images/samsung.jpg')} width='90%' />
         </div>
     </div> );
 }
