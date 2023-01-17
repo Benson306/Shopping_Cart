@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, addQty } from "./redux/cartReducer/cart";
+import { removeFromCart, addQty, reduceQty } from "./redux/cartReducer/cart";
 
 const Cart = () => {
 
@@ -16,6 +16,10 @@ const Cart = () => {
 
     const handleAddQty = (item) => {
         dispatch(addQty(item))
+    }
+
+    const handleReduceQty = (item) => {
+        dispatch(reduceQty(item))
     }
 
     return (
@@ -52,7 +56,7 @@ const Cart = () => {
                 </div>
                 <div class="flex justify-center ml-2 w-1/5">
   
-                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512" onClick={()=> handleReduceQty(item)}>
                         <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
                     </svg>
                     
