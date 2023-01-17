@@ -22,7 +22,7 @@ export const cartSlice = createSlice({
       }else{
         const tempProduct = {...action.payload, cartQuantity: 1};
         state.cartItems.push(tempProduct);
-        toast.success("Added Product to Cart",{
+        toast.success("Product Added to Cart",{
           position: "top-right"
         })
       }
@@ -30,10 +30,23 @@ export const cartSlice = createSlice({
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
       
     },
-    removeFromCart: () => {
+    removeFromCart: (state, action) => {
+      const newCartItems = state.cartItems.filter(item => 
+        item._id !== action.payload._id 
+      )
+      state.cartItems = newCartItems;
 
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.error("Product has been removed from Cart",{
+        position: "top-right"
+      });
     },
-    adjustQty: () =>{
+    addQty: (state, action) =>{
+      const itemIndex = state.cartItems.findIndex(item => item._id === action.payload._id);
+      state.cartItems[itemIndex].cartQuantity += 1;
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+    },
+    reduceQty: () => {
 
     },
     viewItem: () => {
@@ -43,6 +56,6 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart } = cartSlice.actions
+export const { addToCart, removeFromCart, addQty } = cartSlice.actions
 
 export default cartSlice.reducer

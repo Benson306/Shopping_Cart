@@ -1,7 +1,11 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const Navigation = () => {
+    const cart = useSelector(state => state.cart);
+    const count = cart.cartItems.length;
+
     return ( 
         <ul class="flex py-4 pr-8">
             <div class="flex basis-1/4 items-center place-content-center">
@@ -32,7 +36,7 @@ const Navigation = () => {
                     Contact
                 </li>
                 <li class="text-xl text-slate-50 hover:text-orange-400 text-center font-sans ">
-                    <Link to="/cart"><ShoppingCartIcon /><sup class="text-black rounded-full bg-orange-300 p-1 text- font-mono font-features sups">1</sup></Link>
+                    <Link to="/cart"><ShoppingCartIcon /><sup class="text-black rounded-full bg-orange-300 p-1 text- font-mono font-features sups">{ count }</sup></Link>
                 </li>
 
             </div>

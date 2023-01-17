@@ -1,50 +1,74 @@
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart, addQty } from "./redux/cartReducer/cart";
 
 const Cart = () => {
+
+    const cart = useSelector(state => state.cart);
+
+    const count = cart.cartItems.length;
+
+    const dispatch = useDispatch();
+
+    const handleRemoveFromCart = (item) => {
+        dispatch(removeFromCart(item))
+    }
+
+    const handleAddQty = (item) => {
+        dispatch(addQty(item))
+    }
+
     return (
+        
   <div class="container mx-auto mt-5">
 
-    <div class="md:flex shadow-md my-10">
-      <div class="px-5 py-5 w-full md:w-3/4 bg-white md:px-10 md:py-10">
+    <div class="md:flex shadow-md my-3 ">
+      <div class="px-2 py-5 w-full md:w-3/4 bg-white md:px-10 md:py-10">
         <div class="flex justify-between border-b pb-8">
           <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-          <h2 class="font-semibold text-2xl">3 Items</h2>
+          <h2 class="font-semibold text-2xl">{ count } Item(s)</h2>
         </div>
-        <div class="flex mt-10 mb-5">
+        <div class="flex mt-5 mb-5">
           <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
           <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
           <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
           <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
         </div>
+        {
+            cart.cartItems.length === 0 ?
+             <div>Cart is Empty</div> 
+             : 
+             cart.cartItems?.map((item)=>(
+                <div class="flex items-center hover:bg-gray-100 ml-0 px-5 py-5">
+                <div class="flex w-2/5"> 
+                  <div class="w-30">
+                    <img class="object-contain h-20" src={require(`./images/${item.preview1}`)} alt="" />
+                  </div>
+                  <div class="flex flex-col justify-between ml-4 flex-grow">
+                    <span class="font-bold text-sm">{item.prodName}</span>
+                    <span class="text-red-500 text-xs">{item.categ}</span>
+                    <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs" onClick={() => handleRemoveFromCart(item)}>Remove</a>
+                  </div>
+                </div>
+                <div class="flex justify-center ml-2 w-1/5">
+  
+                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                        <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                    </svg>
+                    
+                    <div class="mx-1 border text-center w-12">{item.cartQuantity}</div>
+                        
+                    <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512" onClick={() => handleAddQty(item)}>
+                    <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
+                    </svg>
 
-        {/* Item Area */}
+                </div>
+                <span class="text-center w-1/5 font-semibold text-sm">${item.price}</span>
+                <span class="text-center w-1/5 font-semibold text-sm">${item.price*item.cartQuantity}</span>
+              </div>
+             ))
+        }
 
-        <div class="flex items-center hover:bg-gray-100 -mx-5 px-6 py-5">
-          <div class="flex w-2/5"> 
-            <div class="w-20">
-              <img class="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt="" />
-            </div>
-            <div class="flex flex-col justify-between ml-4 flex-grow">
-              <span class="font-bold text-sm">Iphone 6S</span>
-              <span class="text-red-500 text-xs">Apple</span>
-              <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
-            </div>
-          </div>
-          <div class="flex justify-center w-1/5">
-            {/* <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512"><path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-            </svg> */}
-
-            <input class="mx-2 border text-center w-12" type="number" />
-{/* 
-            <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-              <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"/>
-            </svg> */}
-          </div>
-          <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
-          <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
-        </div>
-        
-        {/* End of Item Area */}
 
         <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
       
@@ -56,7 +80,7 @@ const Cart = () => {
       <div id="summary" class="w-full md:w-1/4 bg-slate-300 px-8 py-10">
         <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
         <div class="flex justify-between mt-10 mb-5">
-          <span class="font-semibold text-sm uppercase">Items 3</span>
+          <span class="font-semibold text-sm uppercase">{count} Items</span>
           <span class="font-semibold text-sm">590$</span>
         </div>
         <div>
