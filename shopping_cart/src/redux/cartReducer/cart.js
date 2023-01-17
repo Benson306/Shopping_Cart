@@ -60,11 +60,33 @@ export const cartSlice = createSlice({
       toast.error("Cart Cleared",{
         position: "top-right"
       });
+    },
+    getTotals: (state, action) => {
+      let { total, quantity } = state.cartItems.reduce( 
+        (cartTotal, cartItem)=>{
+        const {price, cartQuantity} = cartItem;
+        const itemTotal = price * cartQuantity;
+
+        cartTotal.total += itemTotal;
+        cartTotal.quantity += cartQuantity;
+        
+        return cartTotal;
+
+        }
+        ,{ 
+          //initial values
+          total: 0,
+          quantity: 0
+        }
+      )
+      total = parseFloat(total.toFixed(2));
+      state.cartTotalQuantity = quantity;
+      state.cartTotalAmount = total;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addToCart, removeFromCart, addQty, reduceQty, clearCart } = cartSlice.actions
+export const { addToCart, removeFromCart, addQty, reduceQty, clearCart, getTotals } = cartSlice.actions
 
 export default cartSlice.reducer

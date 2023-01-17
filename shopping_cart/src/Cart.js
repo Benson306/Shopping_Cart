@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart, addQty, reduceQty, clearCart } from "./redux/cartReducer/cart";
+import { removeFromCart, addQty, reduceQty, clearCart, getTotals } from "./redux/cartReducer/cart";
+import { useEffect } from "react";
 
 const Cart = () => {
 
@@ -8,7 +9,12 @@ const Cart = () => {
 
     const count = cart.cartItems.length;
 
+
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getTotals());
+    }, [cart, dispatch]);
 
     const handleRemoveFromCart = (item) => {
         dispatch(removeFromCart(item))
@@ -96,12 +102,12 @@ const Cart = () => {
         <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
         <div class="flex justify-between mt-10 mb-5">
           <span class="font-semibold text-sm uppercase">{count} Items</span>
-          <span class="font-semibold text-sm">590$</span>
+          <span class="font-semibold text-sm">${cart.cartTotalAmount}</span>
         </div>
         <div>
           <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
           <select class="block p-2 text-gray-600 w-full text-sm">
-            <option>Standard shipping - $10.00</option>
+            <option>Standard shipping - $100.00</option>
           </select>
         </div>
         <div class="py-10">
@@ -112,7 +118,7 @@ const Cart = () => {
         <div class="border-t mt-8">
           <div class="flex font-semibold justify-between py-6 text-sm uppercase">
             <span>Total cost</span>
-            <span>$600</span>
+            <span>${cart.cartTotalAmount + 100 }</span>
           </div>
           <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
         </div>
