@@ -32,7 +32,7 @@ const Navigation = () => {
                     Contact
                 </li>
                 <li class="text-xl text-slate-50 hover:text-orange-400 text-center font-sans ">
-                <ShoppingCartIcon />
+                    <Link to="/cart"><ShoppingCartIcon /></Link>
                 </li>
 
             </div>

@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from './redux/cartReducer/cart';
 
+import { ToastContainer } from 'react-toastify';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 const Products = () => {
     const [products, setProducts] = useState([]);
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
+
     useEffect(()=>{
         const abortCont = new AbortController();
         fetch('https://ecomm-api-test.onrender.com/products',{signal: abortCont.signal})
@@ -20,7 +26,8 @@ const Products = () => {
     },[])
 
     const handleAddToCart = (prod) =>{
-        dispatch(addToCart(prod))
+        dispatch(addToCart(prod));
+        history.push('/cart')
     }
 
     return ( <div class='pl-6 pr-6'>

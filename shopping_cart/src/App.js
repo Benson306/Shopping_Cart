@@ -1,38 +1,44 @@
 import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
+
 import './App.css';
+
 import Landing from './Landing';
 import Navigation from './Navigation';
 import Products from './Products';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from './redux/cartReducer/cart';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+import Cart from './Cart';
 
 function App() {
-
-  // const count = useSelector(state => state.counter.count);
-
-  // const dispatch = useDispatch();
 
   return (
     <div class="App bg-zinc-900 min-h-screen">
         
         <Router>
 
+        <ToastContainer />
+
         <Navigation />
 
-          <Switch>
+            <Switch>
+              <Route path='/products'>
+                  <Products />
+              </Route>
 
-            
-            <Route path='/products'>
-                <Products />
-            </Route>
+              <Route path="/cart">
+                <Cart />
+              </Route>
 
-            <Route exact path="/">
-                <Landing /> 
-            </Route>
-            
-          </Switch>
+              <Route exact path="/">
+                  <Landing /> 
+              </Route>
+
+              
+            </Switch>
+
         </Router>
+
 
         
             
