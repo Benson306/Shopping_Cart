@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from './redux/cartReducer/cart';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
 
+    const dispatch = useDispatch();
     useEffect(()=>{
         const abortCont = new AbortController();
         fetch('https://ecomm-api-test.onrender.com/products',{signal: abortCont.signal})
@@ -14,7 +17,11 @@ const Products = () => {
         })
 
         return () => abortCont.abort();
-    })
+    },[])
+
+    const handleAddToCart = (prod) =>{
+        dispatch(addToCart(prod))
+    }
 
     return ( <div class='pl-6 pr-6'>
         <br />
@@ -31,7 +38,7 @@ const Products = () => {
                             <p class="text-gray-700 text-base">
                             ${prod.price}
                             </p>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                            <button onClick={()=>handleAddToCart(prod)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                                 Add to Cart
                             </button>
                             
