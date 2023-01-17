@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Cart = () => {
     return (
   <div class="container mx-auto mt-5">
+
     <div class="md:flex shadow-md my-10">
       <div class="px-5 py-5 w-full md:w-3/4 bg-white md:px-10 md:py-10">
         <div class="flex justify-between border-b pb-8">
