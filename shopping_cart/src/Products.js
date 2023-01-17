@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from './redux/cartReducer/cart';
 
-import { ToastContainer } from 'react-toastify';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
+import { Spinner } from 'loading-animations-react';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -12,6 +13,8 @@ const Products = () => {
 
     const history = useHistory();
 
+    const [loading, setLoading] = useState(true);
+
     useEffect(()=>{
         const abortCont = new AbortController();
         fetch('https://ecomm-api-test.onrender.com/products',{signal: abortCont.signal})
@@ -19,6 +22,7 @@ const Products = () => {
             return res.json();
         })
         .then((res)=>{
+            setLoading(false);
             setProducts(res);
         })
 
@@ -35,6 +39,9 @@ const Products = () => {
         <p class="text-3xl text-center text-orange-500 font-semibold">Products</p>
         <br />
         <div class='flex flex-wrap gap-10 justify-center'>
+            <br />
+        
+        { loading && <Spinner color1="blue" color2="#fff" textColor="#fff" /> }
         {
             products.map((prod)=>(
                 
