@@ -1,17 +1,19 @@
-
 import { useState, useEffect } from 'react'
 
 const Products = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(()=>{
-        fetch('https://ecomm-api-test.onrender.com/products')
+        const abortCont = new AbortController();
+        fetch('https://ecomm-api-test.onrender.com/products',{signal: abortCont.signal})
         .then((res)=>{
             return res.json();
         })
         .then((res)=>{
             setProducts(res);
         })
+
+        return () => abortCont.abort();
     })
 
     return ( <div class='pl-6 pr-6'>
@@ -23,7 +25,7 @@ const Products = () => {
             products.map((prod)=>(
                 
                     <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
-                        <img class="w-full" src={require('./images/samsung.jpg')} alt="Sunset in the mountains" />
+                        <img class="object-contain h-48 w-full" src={require(`./images/${prod.preview1}`)} alt={`${prod.preview1}`} />
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2">{prod.prodName}</div>
                             <p class="text-gray-700 text-base">
@@ -38,32 +40,6 @@ const Products = () => {
             ))
         }
         
-
-            {/* <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
-                <img class="w-full" src={require('./images/samsung.jpg')} alt="Sunset in the mountains" />
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Samsung s21 Ultra 5g</div>
-                    <p class="text-gray-700 text-base">
-                    $ 50
-                    </p>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                        Add to Cart
-                    </button>
-                </div>
-            </div> */}
-
-            {/* <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white">
-                <img class="w-full" src={require('./images/samsung.jpg')} alt="Sunset in the mountains" />
-                <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-2">Samsung s21 Ultra 5g</div>
-                    <p class="text-gray-700 text-base">
-                    $ 50
-                    </p>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                        Add to Cart
-                    </button>
-                </div> 
-            </div> */}
 
         </div>
 

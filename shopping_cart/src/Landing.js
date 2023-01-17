@@ -1,8 +1,13 @@
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
-    return ( <div class="flex gap-">
-        <div className="text-slate-100 text-left pt-56 pl-16  basis-1/3">
+    return ( <div class="sm:block md:flex">
+        <br />
+        <div className="md:hidden sm:basis-2/3 pl-10 pr-4">
+            <img src={require('./images/samsung.jpg')} width='90%' />
+        </div>
+        <br />
+        <div className="text-slate-100 text-left sm:pt-20 md:pt-56 pl-16  basis-1/3">
             <p class='font-extrabold text-5xl'>Samsung</p> 
             <p class='font-bold text-3xl'>For Today and Tommorrow</p>
             <br />
@@ -12,7 +17,8 @@ const Landing = () => {
                 Buy now
             </Link>
         </div>
-        <div className="basis-2/3 pl-10 pr-4">
+        <br />
+        <div className="md:basis-2/3 pl-10 pr-4">
             <img src={require('./images/samsung.jpg')} width='90%' />
         </div>
     </div> );
