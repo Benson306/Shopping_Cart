@@ -31,9 +31,9 @@ const Navigation = () => {
         <div>
         <ul class="flex py-2 pr-8 border-b-2 md:border-b-0">
             <div class="flex w-full md:basis-1/4 items-center">
-                <li class="flex basis-1/2 justify-start px-5">
+                <li class="flex basis-1/2 md:justify-end px-5">
                     <Link to="/">
-                        <img class="align-middle" src={require('./images/samsung.png')} />
+                        <img class="align-middle w-12"  src={require('./images/shopping.png')} />
                     </Link>
                     
                 </li>

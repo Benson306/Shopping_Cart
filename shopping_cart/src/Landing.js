@@ -17,7 +17,7 @@ const Landing = () => {
             Absolutely. Positively. Perfect.
             </p>
             <br />
-            <Link to='/products' class="bg-blue-700 hover:bg-blue-500 text-white text-lg text-center font-bold py-2 px-4 rounded-full">
+            <Link to='/products' class="bg-blue-700 hover:bg-blue-500 text-white text-lg text-center align-middle font-bold py-2 px-4 rounded-full">
                 Shop Now <ArrowForwardIosIcon fontSize='small'/>
             </Link>
         </div>
