@@ -23,6 +23,10 @@ const Navigation = () => {
         }
     }
 
+        const handleClick = () =>{      
+                document.querySelector('.dropDown').setAttribute("class","dropDown invisible md:invisible transition duration-700 ease-in-out bg-slate-300 ");
+        }
+
     return ( 
         <div>
         <ul class="flex py-2 pr-8 border-b-2 md:border-b-0">
@@ -65,9 +69,9 @@ const Navigation = () => {
         </ul>
         <div class='dropDown invisible md:invisible transition duration-700 ease-in-out bg-slate-300 '>
             <ul class='flex justify-center items-center p-2'>
-                <li class='items-center border-black border-r-2 px-5'><Link to='/products'>Products</Link></li>
-                <li class='items-center border-black border-r-2 px-5'>Contacts</li>
-                <li class="px-5 text-xl text-slate-50 hover:text-orange-400 text-center font-sans ">
+                <li class='items-center border-black border-r-2 px-5'><Link to='/products' onClick={handleClick}>Products</Link></li>
+                <li class='items-center border-black border-r-2 px-5' onClick={handleClick}>Contacts</li>
+                <li class="px-5 text-xl text-slate-50 hover:text-orange-400 text-center font-sans " onClick={handleClick}>
                     <Link to="/cart"><ShoppingCartIcon color='primary' /><sup class="text-black rounded-full bg-orange-300 p-1 text- font-mono font-features sups">{ count }</sup></Link>
                 </li>
             </ul>
