@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const Landing = () => {
     return ( <div class="sm:block md:flex">
@@ -8,13 +9,16 @@ const Landing = () => {
         </div>
         <br />
         <div className="text-slate-100 text-left sm:pt-15 md:pt-56 pl-16  basis-1/3">
-            <p class='font-extrabold text-5xl'>Samsung</p> 
-            <p class='font-bold text-3xl'>For Today and Tommorrow</p>
+            <p class='font-extrabold text-5xl'>Utulivu</p> 
+            <p class='font-bold text-3xl'>Electronics and Accessories</p>
             <br />
-            <p>Get a front row seat to the latest innovation by Samsung.</p>
+            <p>
+            All the best for a whole lot less.
+            Absolutely. Positively. Perfect.
+            </p>
             <br />
-            <Link to='/products' class="bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full">
-                Buy now
+            <Link to='/products' class="bg-blue-700 hover:bg-blue-500 text-white text-lg text-center font-bold py-2 px-4 rounded-full">
+                Shop Now <ArrowForwardIosIcon fontSize='small'/>
             </Link>
         </div>
         <br />
