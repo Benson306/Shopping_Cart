@@ -1,5 +1,5 @@
 [[redirects]]
-  from = “/api/*”
+  from = “/products”
   to = “https://ecomm-api-test.onrender.com/:splat"
   status = 200
 [[redirects]]
