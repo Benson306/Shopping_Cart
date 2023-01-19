@@ -17,7 +17,7 @@ const Products = () => {
 
     useEffect(()=>{
         const abortCont = new AbortController();
-        fetch('https://ecomm-api-test.onrender.com/products',{
+        fetch('/products',{
             signal: abortCont.signal,
             mode: 'no-cors'
         })
