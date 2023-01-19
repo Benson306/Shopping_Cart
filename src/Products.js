@@ -25,7 +25,6 @@ const Products = () => {
             return res.json();
         })
         .then((res)=>{
-            console.log(res);
             setLoading(false);
             setProducts(res);
         })
