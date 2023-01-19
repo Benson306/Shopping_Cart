@@ -22,10 +22,10 @@ const Products = () => {
             signal: abortCont.signal
         })
         .then((res)=>{
-            console.log(res);
             return res.json();
         })
         .then((res)=>{
+            console.log(res);
             setLoading(false);
             setProducts(res);
         })
