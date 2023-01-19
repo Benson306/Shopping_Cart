@@ -18,8 +18,7 @@ const Products = () => {
     useEffect(()=>{
         const abortCont = new AbortController();
         fetch('/products',{
-            signal: abortCont.signal,
-            mode: 'no-cors'
+            signal: abortCont.signal
         })
         .then((res)=>{
             console.log(res);
