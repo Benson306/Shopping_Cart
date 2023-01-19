@@ -17,7 +17,7 @@ const Products = () => {
 
     useEffect(()=>{
         const abortCont = new AbortController();
-        fetch('/api/products',{
+        fetch('/products',{
             signal: abortCont.signal
         })
         .then((res)=>{
