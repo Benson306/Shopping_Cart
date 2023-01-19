@@ -1,8 +1,0 @@
-[[redirects]]
-  from = “/products”
-  to = “https://ecomm-api-test.onrender.com/:splat"
-  status = 200
-[[redirects]]
-  from = “/*”
-  to = “/index.html”
-  status = 200
