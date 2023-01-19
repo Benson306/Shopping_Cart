@@ -22,6 +22,7 @@ const Products = () => {
             mode: 'no-cors'
         })
         .then((res)=>{
+            console.log(res);
             return res.json();
         })
         .then((res)=>{
