@@ -44,7 +44,8 @@ const Products = () => {
         <div class='flex flex-wrap gap-10 justify-center'>
             <br />
         
-        { loading && <Spinner color1="blue" color2="#fff" textColor="#fff" /> }
+        <div class="w-56">{ loading && <Spinner color1="blue" color2="#fff" textColor="#fff" /> }</div>
+        
         {
             products.map((prod)=>(
                 
