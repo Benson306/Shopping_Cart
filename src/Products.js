@@ -39,7 +39,7 @@ const Products = () => {
 
     return ( <div class='pl-6 pr-6'>
         <br />
-        <p class="text-3xl text-center text-orange-500 font-semibold">Products</p>
+        <p class="text-3xl text-center text-orange-500 font-semibold">Product</p>
         <br />
         <div class='flex flex-wrap gap-10 justify-center'>
             <br />
@@ -57,7 +57,7 @@ const Products = () => {
                             ${prod.price}
                             </p>
                             <button onClick={()=>handleAddToCart(prod)} class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
-                                Add to Cart
+                                Add to Carts
                             </button>
                             
                         </div>
