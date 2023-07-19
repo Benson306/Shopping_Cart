@@ -23,9 +23,9 @@ const Navigation = () => {
         }
     }
 
-        const handleClick = () =>{      
-                document.querySelector('.dropDown').setAttribute("class","dropDown invisible md:invisible transition duration-700 ease-in-out bg-slate-300 ");
-        }
+    const handleClick = () =>{      
+            document.querySelector('.dropDown').setAttribute("class","dropDown invisible md:invisible transition duration-700 ease-in-out bg-slate-300 ");
+    }
 
     return ( 
         <div>
